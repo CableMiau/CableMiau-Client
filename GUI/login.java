@@ -9,7 +9,10 @@ import java.io.IOException;
 
 public class login {
     public static void login_gui() {
-        JFrame frame = new JFrame("NetCat - Login");
+        JFrame frame = new JFrame("CableMiau - Login");
+
+        JLabel srvLabel = new JLabel("Server IP:");
+        JTextField srvField = new JTextField();
 
         JLabel usernameLabel = new JLabel("Username:");
         JTextField usernameField = new JTextField();
@@ -23,7 +26,11 @@ public class login {
 
         JButton loginButton = new JButton("Log in");
 
-        frame.setLayout(new GridLayout(7,1));
+        frame.setLayout(new GridLayout(9,1));
+
+        frame.add(srvLabel);
+        frame.add(srvField);
+
         frame.add(usernameLabel);
         frame.add(usernameField);
 
@@ -47,8 +54,7 @@ public class login {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        loginButton.addActionListener(_ -> LoginActions.loginAction(usernameField, passwordField)
-        );
+        loginButton.addActionListener(_ -> LoginActions.loginAction(srvField,usernameField, passwordField));
         passwordBox.addActionListener(_ -> LoginActions.showPasswordAction(passwordBox, passwordField, defaultEcho));
     }
 }
